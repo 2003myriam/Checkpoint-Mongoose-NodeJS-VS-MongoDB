@@ -66,15 +66,23 @@ try {
   console.error("Error finding person");
 }
 }
-
-
+/* ========= Trouvez une personnes par son id  ======= */
+async function findpersonbyid(personId ){
+try {
+  const findbyid = await Person.findById(personId );
+  console.log(findbyid);
+} catch (error) {
+  console.error("Error finding person");
+}
+}
 
 async function main(){
    await connectDB()
    // await addperson() qst1
    // await  createPerson() qst 2
    //await findpersonbyname() qst3
-   await findpersonbyfood("pizza")
+   //await findpersonbyfood("pizza") qst4
+   await findpersonbyid("6a6a011cbfe536c6c26905a1")
 }
 
 main()
