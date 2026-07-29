@@ -98,6 +98,18 @@ try {
   console.error("Error finding person");
 }
 }
+
+/* ======= utiliser la methode indByIdAndRemove() ======= */
+async function findpersonandremove(personId ){
+try {
+  const findanddelete = await Person.findByIdAndDelete(personId);
+  console.log(findanddelete);
+  
+
+} catch (error) {
+  console.error("Error finding person");
+}
+}
 async function main(){
    await connectDB()
    // await addperson() qst1
@@ -106,7 +118,8 @@ async function main(){
    //await findpersonbyfood("pizza") qst4
    //await findpersonbyid("6a6a011cbfe536c6c26905a1") qst 5 
    //await updatefavoritefood("6a6a011cbfe536c6c26905a1") qst 6 
-   await findandupdateage("Sara")
+   // await findandupdateage("Sara") qst 7 
+   await findpersonandremove("6a69fc95144bab7bfb95bd38")
 }
 
 main()
