@@ -110,6 +110,19 @@ try {
   console.error("Error finding person");
 }
 }
+
+/* ======= supprimr les personne ayant un nom marry ======= */
+async function removeperson(personName ){
+try {
+  const deleteperson = await Person.deleteMany({name:personName});
+  console.log(deleteperson);
+  
+
+} catch (error) {
+  console.error("Error finding person");
+}
+}
+
 async function main(){
    await connectDB()
    // await addperson() qst1
@@ -119,7 +132,8 @@ async function main(){
    //await findpersonbyid("6a6a011cbfe536c6c26905a1") qst 5 
    //await updatefavoritefood("6a6a011cbfe536c6c26905a1") qst 6 
    // await findandupdateage("Sara") qst 7 
-   await findpersonandremove("6a69fc95144bab7bfb95bd38")
+   //await findpersonandremove("6a69fc95144bab7bfb95bd38")
+   await removeperson("marry")
 }
 
 main()
