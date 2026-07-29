@@ -122,7 +122,23 @@ try {
   console.error("Error finding person");
 }
 }
+/* ========= Enchaînez .find(), .sort(), .limit(), .select(), puis .exec()==== */
+async function personsteps(){
+try {
+  const person = await Person.find(
+    {favoriteFoods: "burritos"}
+  )
+  .sort({name:1})  // filtrer le nom par ordre croissant 
+  .limit(2)        // limiter le resultatt a deux document seulement
+  .select("-age")   // masquer le champs age 
+  .exec();         // faire l'execution
+  console.log(person);
+  
 
+} catch (error) {
+  console.error("Error finding person");
+}
+}
 async function main(){
    await connectDB()
    // await addperson() qst1
@@ -132,8 +148,9 @@ async function main(){
    //await findpersonbyid("6a6a011cbfe536c6c26905a1") qst 5 
    //await updatefavoritefood("6a6a011cbfe536c6c26905a1") qst 6 
    // await findandupdateage("Sara") qst 7 
-   //await findpersonandremove("6a69fc95144bab7bfb95bd38")
-   await removeperson("marry")
+   //await findpersonandremove("6a69fc95144bab7bfb95bd38") qst 8
+  // await removeperson("marry") qst 9 
+  await personsteps()
 }
 
 main()
