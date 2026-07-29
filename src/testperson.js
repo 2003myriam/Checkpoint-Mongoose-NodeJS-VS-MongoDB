@@ -1,4 +1,5 @@
 const { Person } = require("../src/models/person");
+const arrayOfPeople = require("./data/people");
 const connectDB = require("../src/config/db")
 
 const person1 = new Person(
@@ -7,7 +8,7 @@ const person1 = new Person(
   favoriteFoods:["pasta","pizza"]
 });
 
- 
+ /* ===== save une seule personne ===== */
 async function addperson(){
    try{
       await person1.save()
@@ -18,9 +19,22 @@ async function addperson(){
       
    }
 }
+async function createPerson(){
+try {
+  const newperson = await Person.create(
+     arrayOfPeople,
+
+  );
+  console.log("user saved");
+} catch (error) {
+  console.error("Error creating user");
+}
+}
+
 async function main(){
    await connectDB()
    await addperson()
+   await  createPerson()
 }
 
 main()
