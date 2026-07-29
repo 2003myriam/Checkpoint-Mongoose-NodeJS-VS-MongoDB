@@ -75,14 +75,26 @@ try {
   console.error("Error finding person");
 }
 }
+/* ======= Find, Edit, puis Save======= */
+async function updatefavoritefood(personId ){
+try {
+  const findbyid = await Person.findById(personId );
+  console.log(findbyid);
+   findbyid.favoriteFoods.push("hamburger")
+  await findbyid.save()
 
+} catch (error) {
+  console.error("Error finding person");
+}
+}
 async function main(){
    await connectDB()
    // await addperson() qst1
    // await  createPerson() qst 2
    //await findpersonbyname() qst3
    //await findpersonbyfood("pizza") qst4
-   await findpersonbyid("6a6a011cbfe536c6c26905a1")
+   //await findpersonbyid("6a6a011cbfe536c6c26905a1") qst 5 
+   await updatefavoritefood("6a6a011cbfe536c6c26905a1")
 }
 
 main()
