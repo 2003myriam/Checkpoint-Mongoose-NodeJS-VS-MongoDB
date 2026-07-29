@@ -87,6 +87,17 @@ try {
   console.error("Error finding person");
 }
 }
+/* ======= utiliser la methode findOneAndUpdate() ======= */
+async function findandupdateage(personName  ){
+try {
+  const findandupdate = await Person.findOneAndUpdate({name:personName}, {age:20},{ new : true } );
+  console.log(findandupdate);
+  
+
+} catch (error) {
+  console.error("Error finding person");
+}
+}
 async function main(){
    await connectDB()
    // await addperson() qst1
@@ -94,7 +105,8 @@ async function main(){
    //await findpersonbyname() qst3
    //await findpersonbyfood("pizza") qst4
    //await findpersonbyid("6a6a011cbfe536c6c26905a1") qst 5 
-   await updatefavoritefood("6a6a011cbfe536c6c26905a1")
+   //await updatefavoritefood("6a6a011cbfe536c6c26905a1") qst 6 
+   await findandupdateage("Sara")
 }
 
 main()
