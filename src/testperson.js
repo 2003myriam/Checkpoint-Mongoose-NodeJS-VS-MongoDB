@@ -19,6 +19,7 @@ async function addperson(){
       
    }
 }
+/* =========création multiple de personnes ======= */
 async function createPerson(){
 try {
   const newperson = await Person.create(
@@ -30,11 +31,50 @@ try {
   console.error("Error creating user");
 }
 }
+/* ========= Trouvez toutes les personnes ayant un nom donné ======= */
+async function findpersonbyname(){
+try {
+  const findperson = await Person.find(
+     {name:"Tom"}
+
+  );
+  console.log(findperson);
+} catch (error) {
+  console.error("Error finding person");
+}
+}
+/* ========= Trouvez une personnes ayant un nom donné ======= */
+async function findpersonbyname(){
+try {
+  const findperson = await Person.find(
+     {name:"Tom"}
+
+  );
+  console.log(findperson);
+} catch (error) {
+  console.error("Error finding person");
+}
+}
+/* ========= Trouvez une personnes  qui a un certain aliment dans ses favoris ======= */
+async function findpersonbyfood(food){
+try {
+  const findfood = await Person.findOne(
+    {favoriteFoods: food}
+  );
+  console.log(findfood);
+} catch (error) {
+  console.error("Error finding person");
+}
+}
+
+
 
 async function main(){
    await connectDB()
-   await addperson()
-   await  createPerson()
+   // await addperson() qst1
+   // await  createPerson() qst 2
+   //await findpersonbyname() qst3
+   await findpersonbyfood("pizza")
 }
 
 main()
